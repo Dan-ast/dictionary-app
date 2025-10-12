@@ -1,4 +1,4 @@
-
+import Dictionary from "./Dictionary";
 import './App.css';
 
 function App() {
@@ -6,6 +6,12 @@ function App() {
     <div className="App">
       <header className="App-header">
       </header>
+      <main>
+        <Dictionary />
+      </main>
+      <footer className="App-footer">
+        <small>Coded by Anastasiia Dekret</small>
+      </footer>
     </div>
   );
 }
