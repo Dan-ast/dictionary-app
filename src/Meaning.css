@@ -1,0 +1,31 @@
+.Meaning {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.Meaning:last-child {
+  margin-bottom: 0;
+}
+
+.Meaning h3 {
+  color: #374151;
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.Meaning .Definition {
+    color: #1f2937;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.Meaning .Example {
+  color: #6b7280;
+  display: block;
+  margin: 18px 10px;
+  padding-left: 15px;
+  border-left: 3px solid #4f46e5;
+}

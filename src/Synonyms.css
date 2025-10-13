@@ -1,0 +1,36 @@
+.Synonyms {
+  margin: 15px 0;
+  padding: 0;
+}
+
+.Synonyms strong {
+  color: #374151;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.Synonyms ul {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.Synonyms li {
+  background: #f8fafc;
+  color: #4f46e5;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+}
+
+.Synonyms li:hover {
+  background: #4f46e5;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+}

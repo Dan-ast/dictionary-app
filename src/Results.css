@@ -1,0 +1,21 @@
+.Results {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.Results h2 {
+  color: #1f2937;
+  font-size: 32px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.Results .phonetic {
+  color: #4f46e5;
+  font-size: 18px;
+  font-style: italic;
+  margin-bottom: 25px;
+}

@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
       </header>
       <main>
-        <Dictionary />
+        <Dictionary defaultKeyword="forest"/>
       </main>
       <footer className="App-footer">
         <small>Coded by Anastasiia Dekret</small>
