@@ -50,7 +50,14 @@ Uses the free Dictionary API to fetch definitions and phonetics.
 
 ## 📸 Screenshots
 
-(To be added)
+### 🖥️ Main Search Screen
+<img src="./public/screenshots/dictionary-main.png" width="900" />
+
+### 🔎 Full Search Results
+<img src="./public/screenshots/dictionary-results.png" width="900" />
+
+### 📱 Mobile View
+<img src="./public/screenshots/dictionary-mobile.png" width="350" />
 
 ## 🌟 Highlights
 - Clean React component architecture
