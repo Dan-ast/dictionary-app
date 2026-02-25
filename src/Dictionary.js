@@ -10,11 +10,13 @@ export default function Dictionary(props) {
     let [loaded, setLoaded] = useState(false);
     let [photos, setPhotos] = useState(null);
     let [error, setError] = useState(null);
+    let [isLoading, setIsLoading] = useState(false);
 
     function handleDictionResponse(response) {
         console.log("API Response:", response.data[0]); 
         setResults(response.data[0]);
         setError(null);
+        setIsLoading(false);
     }
 
     function handlePexelsResponse(response) {
@@ -32,11 +34,15 @@ export default function Dictionary(props) {
         }
         setResults(null);
         setPhotos(null);
+        setIsLoading(false);
     }
 
     function search() {
+        setIsLoading(true);
+
         //documentation: https://dictionaryapi.dev/
         let dictionaryUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
+        
         axios
         .get(dictionaryUrl)
         .then(handleDictionResponse)
@@ -46,7 +52,10 @@ export default function Dictionary(props) {
         "563492ad6f91700001000001fdd29f0808df42bd90c33f42e128fa89";
         let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=9`;
         let headers = { Authorization: `${pexelsApiKey}` };
-        axios.get(pexelsApiUrl, { headers: headers }).then(handlePexelsResponse).catch(handleError);
+        axios
+        .get(pexelsApiUrl, { headers: headers })
+        .then(handlePexelsResponse)
+        .catch(handleError);
     }
 
     function handleSubmit(event) {
@@ -76,8 +85,9 @@ export default function Dictionary(props) {
                     </div>
                 </section>
                 {error && <div className="error-message">{error}</div>}
-                <Results results={results} />
-                {!error && <Photos photos={photos} />}
+                {isLoading && <div className="loader">Loading...</div>}
+                {!isLoading && !error && <Results results={results} />}
+                {!isLoading && !error && <Photos photos={photos} />}
             </div>
         );
     } else {
