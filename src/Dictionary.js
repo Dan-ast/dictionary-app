@@ -1,39 +1,52 @@
 import React, {useState} from "react";
 import axios from "axios";
-import "./Dictionary.css";
 import Results from "./Results";
 import Photos from "./Photos";
+import "./Dictionary.css";
 
 export default function Dictionary(props) {
     let [keyword, setKeyword] = useState(props.defaultKeyword);
     let [results, setResults] = useState(null);
     let [loaded, setLoaded] = useState(false);
     let [photos, setPhotos] = useState(null);
+    let [error, setError] = useState(null);
 
-
-    // function handleDictionResponse(response) {
-    //     setResults(response.data[0]);
-    // }
+    function handleDictionResponse(response) {
+        console.log("API Response:", response.data[0]); 
+        setResults(response.data[0]);
+        setError(null);
+    }
 
     function handlePexelsResponse(response) {
+        console.log("Pexels API Response:", response.data);
         setPhotos(response.data.photos);
     }
 
-    function handleResponse(response) {
-        console.log(response.data[0]);
-        setResults(response.data[0]);
+    function handleError(error) {
+        console.error("API Error:", error);
+
+        if(error.response && error.response.status === 404) {
+            setError("🤷‍♀️ No definitions found for this word. Please try another one.");
+        } else {
+            setError("Sorry, there was an error fetching the data. Please try again ");
+        }
+        setResults(null);
+        setPhotos(null);
     }
 
     function search() {
         //documentation: https://dictionaryapi.dev/
-        let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
-        axios.get(apiUrl).then(handleResponse);
+        let dictionaryUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
+        axios
+        .get(dictionaryUrl)
+        .then(handleDictionResponse)
+        .catch(handleError);
 
         let pexelsApiKey =
         "563492ad6f91700001000001fdd29f0808df42bd90c33f42e128fa89";
         let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=9`;
         let headers = { Authorization: `${pexelsApiKey}` };
-        axios.get(pexelsApiUrl, { headers: headers }).then(handlePexelsResponse);
+        axios.get(pexelsApiUrl, { headers: headers }).then(handlePexelsResponse).catch(handleError);
     }
 
     function handleSubmit(event) {
@@ -62,8 +75,9 @@ export default function Dictionary(props) {
                         suggested words: snow, sunset, atom, date...
                     </div>
                 </section>
+                {error && <div className="error-message">{error}</div>}
                 <Results results={results} />
-                <Photos photos={photos} />
+                {!error && <Photos photos={photos} />}
             </div>
         );
     } else {
