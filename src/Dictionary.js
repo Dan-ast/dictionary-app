@@ -3,6 +3,7 @@ import axios from "axios";
 import Results from "./Results";
 import Photos from "./Photos";
 import "./Dictionary.css";
+import EmptyState from "./EmptyState";
 
 export default function Dictionary(props) {
     let [keyword, setKeyword] = useState(props.defaultKeyword);
@@ -28,7 +29,7 @@ export default function Dictionary(props) {
         console.error("API Error:", error);
 
         if(error.response && error.response.status === 404) {
-            setError("🤷‍♀️ No definitions found for this word. Please try another one.");
+            setError("No definitions found for this word. Please try another one.");
         } else {
             setError("Sorry, there was an error fetching the data. Please try again ");
         }
@@ -84,7 +85,7 @@ export default function Dictionary(props) {
                         suggested words: snow, sunset, atom, date...
                     </div>
                 </section>
-                {error && <div className="error-message">{error}</div>}
+                {error && (<EmptyState message={error} />)}
                 {isLoading && <div className="loader">Loading...</div>}
                 {!isLoading && !error && <Results results={results} />}
                 {!isLoading && !error && <Photos photos={photos} />}

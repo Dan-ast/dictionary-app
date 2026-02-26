@@ -1,0 +1,15 @@
+.EmptyState {
+    text-align: center;
+    padding: 30px 20px;
+    opacity: 0.8;
+}
+
+.empty-emoji {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.empty-message {
+    font-size: 15px;
+    color: #555;
+}
