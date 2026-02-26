@@ -6,8 +6,10 @@ A clean and fast English dictionary built with React, focusing on simplicity, cl
 
 ## ✨ Features
 - 🔤 Search for any English word
-- 📚 Definitions, phonetics & example sentences (if available)
-- 🔊 Audio pronunciation
+- 📚 Definitions, phonetic transcription, audio pronunciation & example sentences
+- 🔊 One-tap button to hear the word 
+- 🖼️ Contextual photos from Pexels API 
+- 🤷‍♀️ Helpful feedback when a word doesn't exist
 - 📱 Fully responsive layout
 - ⚡ Fast loading & minimalistic UI
 
@@ -26,10 +28,11 @@ A clean and fast English dictionary built with React, focusing on simplicity, cl
 
 ## 🧠 What I Learned
 - Working with async API requests in React
-- Structuring reusable components
-- Managing UI states (loading / success / error)
+- Structuring reusable React components
+- Managing UI states: loading, success, error, empty state
 - Handling incomplete or missing API data
 - Improving the user experience with audio and formatting
+- Designing clean, readable, maintainable component logic
 
 ## 🚀 Future Improvements
 - ⭐ Add Favorites / Bookmarks (LocalStorage)
