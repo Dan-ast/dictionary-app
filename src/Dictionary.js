@@ -12,6 +12,7 @@ export default function Dictionary(props) {
     let [photos, setPhotos] = useState(null);
     let [error, setError] = useState(null);
     let [isLoading, setIsLoading] = useState(false);
+    let [isDarkMode, setIsDarkMode] = useState(false);
 
     function handleDictionResponse(response) {
         console.log("API Response:", response.data[0]); 
@@ -75,11 +76,14 @@ export default function Dictionary(props) {
 
     if (loaded) {
         return (
-            <div className="Dictionary">
+            <div className={`Dictionary ${isDarkMode ? "dark" : ""}`}>
                 <section>
                     <h1>What word do you want to look up?</h1>
+                    <button className="theme-toggle" onClick={() => setIsDarkMode(!isDarkMode)}>
+                        {isDarkMode ? "Light Mode" : "Dark Mode"}
+                    </button>
                     <form onSubmit={handleSubmit}>
-                    <input type="search" autoFocus={true} onChange={handleKeywordChange} defaultValue={props.defaultKeyword}/>
+                        <input type="search" autoFocus={true} onChange={handleKeywordChange} defaultValue={props.defaultKeyword}/>
                     </form>
                     <div className="hint">
                         suggested words: snow, sunset, atom, date...
