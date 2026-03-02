@@ -79,8 +79,12 @@ export default function Dictionary(props) {
             <div className={`Dictionary ${isDarkMode ? "dark" : ""}`}>
                 <section>
                     <h1>What word do you want to look up?</h1>
-                    <button className="theme-toggle" onClick={() => setIsDarkMode(!isDarkMode)}>
-                        {isDarkMode ? "Light Mode" : "Dark Mode"}
+                    <button className="theme-toggle" onClick={() => {
+                        setIsDarkMode(!isDarkMode);
+                        document.body.classList.toggle("dark");
+                        }}
+                    >
+                        {isDarkMode ? "☀️ Light Mode" : "🌑 Dark Mode"}
                     </button>
                     <form onSubmit={handleSubmit}>
                         <input type="search" autoFocus={true} onChange={handleKeywordChange} defaultValue={props.defaultKeyword}/>

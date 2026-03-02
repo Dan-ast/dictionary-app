@@ -28,12 +28,23 @@
 }
 
 .theme-toggle {
-  margin: 10px;
+  margin: 0 auto 20px auto;
+  display: block;
   background: transparent;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 6px 12px;
+  border-radius: 8px;
+  padding: 8px 16px;
   cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(79, 70, 229, 0.3);
+}
+
+.theme-toggle:hover {
+  border-color: #8a6cff;
+  box-shadow: 0 0 12px #8a6cff;
+  animation: pulseGlow 1.3s infinite alternate;
 }
 
 .Dictionary.dark .theme-toggle {
@@ -75,6 +86,17 @@
     margin-left: 15px;
 }
 
+.Dictionary.dark input[type="search"] {
+  background-color: #2a2a2a;
+  border-color: #444;
+  box-shadow: none;
+}
+
+.Dictionary.dark input[type="search"]:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.2);
+}
+
 .loader {
   margin: 30px auto;
   width: 48px;
@@ -99,6 +121,15 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  from {
+    box-shadow: 0 0 8px rgba(138, 108, 255, 0.7);
+  }
+  to {
+    box-shadow: 0 0 16px rgba(138, 108, 255, 1);
   }
 }
 
